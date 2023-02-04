@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    bool isJumped;
     bool isFacedRight;
     Animator animator;
     [SerializeField] float jumpSpeed;
@@ -38,11 +39,12 @@ public class Player : MonoBehaviour
             animator.SetBool("isRunning", false);
         }
 
-        if (Input.GetKey("space"))
+        if (Input.GetKeyDown("space") && !isJumped)
         {
             animator.SetTrigger("isJumping");
-            transform.Translate(Vector3.up * jumpSpeed * Time.deltaTime);
+            isJumped = true;
         }
+
 
         if (Input.GetKey("d") || Input.GetKey("a"))
         {
@@ -50,6 +52,25 @@ public class Player : MonoBehaviour
         }
         
      
+    }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            if (isJumped)
+            {
+                animator.SetTrigger("isGrounded");
+            }
+            isJumped = false;
+           
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (isJumped)
+        {
+            transform.Translate(Vector3.up * jumpSpeed * Time.fixedDeltaTime, Space.World);
+        }
     }
 
 }
