@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     Animator animator;
     [SerializeField] float jumpSpeed;
     [SerializeField] float movementSpeed;
-    [SerializeField] public static float health = 100;
+    public float maxHealth;
+    [SerializeField] public static float currentHealth;
     [SerializeField] public static float damage = 50;
     public static Vector3 currentPos;
 
@@ -62,7 +63,7 @@ public class Player : MonoBehaviour
         }
         #endregion 
 
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -82,7 +83,7 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.tag == "Thorn")
         {
-            health -= Enemy.enemyDamage;
+            currentHealth -= Enemy.enemyDamage;
         }
     }
 

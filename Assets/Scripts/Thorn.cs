@@ -33,7 +33,7 @@ public class Thorn : MonoBehaviour
         float bulletDamage = Random.Range(10, 16);
         if (other.CompareTag("Player"))
         {
-            Player.health -= bulletDamage;
+            Player.currentHealth -= bulletDamage;
 
             Destroy(gameObject);
         }
