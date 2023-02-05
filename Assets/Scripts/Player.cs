@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -9,13 +10,17 @@ public class Player : MonoBehaviour
     Animator animator;
     [SerializeField] float jumpSpeed;
     [SerializeField] float movementSpeed;
-    public float maxHealth;
-    [SerializeField] public static float currentHealth;
-    [SerializeField] public static float damage = 50;
+    [SerializeField] public static int maxHealth = 100;
+    [SerializeField] public static int currentHealth;
+    [SerializeField] public static int damage = 50;
     public static Vector3 currentPos;
+    public HealthBar healthBar;
+    public int health;
 
     void Start()
     {
+        healthBar.SetMaxhealth(maxHealth);
+        currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         isFacedRight = true;
     }
@@ -65,8 +70,11 @@ public class Player : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Destroy(this.gameObject);
+            SceneManager.LoadScene("Level 1");
         }
+        healthBar.SetHealth(currentHealth);
+
+        health = currentHealth;
     }
 
     private void OnCollisionEnter(Collision other)
@@ -84,6 +92,8 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Thorn")
         {
             currentHealth -= Enemy.enemyDamage;
+
+            
         }
     }
 

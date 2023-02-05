@@ -30,7 +30,7 @@ public class Thorn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        float bulletDamage = Random.Range(10, 16);
+        int bulletDamage = Random.Range(20, 26);
         if (other.CompareTag("Player"))
         {
             Player.currentHealth -= bulletDamage;

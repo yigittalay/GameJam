@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Boss : MonoBehaviour
 {
-    public GameObject thornPrefab;
-    public static int enemyHealth = 150;
+    public GameObject ThornPrefab;
+    public static int EnemyHealth = 500;
     public static int enemyDamage = 25;
 
     void Start()
     {
-        InvokeRepeating("SpawnBullet", 1f, 4f);
-        
+        InvokeRepeating("SpawnBullet", 1f, 3f);
+
     }
 
     void Update()
     {
-        if (enemyHealth <= 0)
+        if (EnemyHealth <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -26,11 +26,11 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Weapon")
         {
-            enemyHealth -= Player.damage;
+            EnemyHealth -= Player.damage;
         }
     }
     void SpawnBullet()
     {
-        Instantiate(thornPrefab, transform.position + new Vector3(0f, 2f, 0f),  thornPrefab.transform.rotation);
+        Instantiate(ThornPrefab, transform.position + new Vector3(0f, 2f, 0f), ThornPrefab.transform.rotation);
     }
 }
