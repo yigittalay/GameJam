@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     Animator animator;
     [SerializeField] float jumpSpeed;
     [SerializeField] float movementSpeed;
+    [SerializeField] public static float health = 100;
+    [SerializeField] public static float damage = 50;
 
     void Start()
     {
@@ -16,9 +18,10 @@ public class Player : MonoBehaviour
         isFacedRight = true;
     }
 
-
     void Update()
     {
+        #region ifler
+
         if (Input.GetKeyDown("a") && isFacedRight && !Input.GetKey("d"))
         {
             transform.Rotate(-Vector3.up, 180);
@@ -51,8 +54,18 @@ public class Player : MonoBehaviour
             transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
         }
         
-     
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger("isAttacking");
+        }
+        #endregion 
+
+        if (health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Platform"))
@@ -64,7 +77,13 @@ public class Player : MonoBehaviour
             isJumped = false;
            
         }
+
+        if (other.gameObject.tag == "Throne")
+        {
+            health -= Enemy.enemyDamage;
+        }
     }
+
     private void FixedUpdate()
     {
         if (isJumped)
