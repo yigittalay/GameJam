@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] float movementSpeed;
     [SerializeField] public static float health = 100;
     [SerializeField] public static float damage = 50;
+    public static Vector3 currentPos;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        currentPos = transform.position;
         #region ifler
 
         if (Input.GetKeyDown("a") && isFacedRight && !Input.GetKey("d"))
@@ -78,7 +80,7 @@ public class Player : MonoBehaviour
            
         }
 
-        if (other.gameObject.tag == "Throne")
+        if (other.gameObject.tag == "Thorn")
         {
             health -= Enemy.enemyDamage;
         }

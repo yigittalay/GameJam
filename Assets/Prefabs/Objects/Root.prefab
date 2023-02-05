@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5956066693776726305}
   - component: {fileID: 7280043013665445508}
   - component: {fileID: 4819730958679220814}
+  - component: {fileID: 2813419813146930314}
+  - component: {fileID: 3535485284561647151}
   m_Layer: 0
   m_Name: Root
   m_TagString: Root
@@ -27,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6477271057490805659}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.48, y: 0.85, z: -7.38}
-  m_LocalScale: {x: 5, y: 5, z: 8}
+  m_LocalScale: {x: 7, y: 7, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,3 +85,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2813419813146930314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477271057490805659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 610d7615b7323b74d9da68399fd69d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thornPrefab: {fileID: 7707373380676642663, guid: 4ab69ae1bac9045c0a24373ecd375947, type: 3}
+--- !u!65 &3535485284561647151
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477271057490805659}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.284168, y: 0.33874103, z: 0.32808518}
+  m_Center: {x: 0.009142987, y: -0.01080555, z: -0.14938612}
